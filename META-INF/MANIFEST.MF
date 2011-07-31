@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ThreadLocalRefactoring
-Bundle-SymbolicName: ThreadLocalRefactoring; singleton:=true
+Bundle-Name: ThreadPrivateRefactoring
+Bundle-SymbolicName: ThreadPrivateRefactoring;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: edu.uiuc.threadlocalrefactoring.Activator
+Bundle-Activator: edu.uiuc.threadprivaterefactoring.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ltk.core.refactoring;bundle-version="3.5.100",
@@ -14,4 +14,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.text;bundle-version="3.5.100"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.uiuc.threadlocalrefactoring
+Export-Package: edu.uiuc.threadprivaterefactoring

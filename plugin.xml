@@ -16,13 +16,13 @@
             </separator>
          </menu>
          <action
-               label="Convert to ThreadLocal"
+               label="Convert to ThreadPrivate"
                icon="icons/sample.gif"
-               class="edu.uiuc.threadlocalrefactoring.ui.ConvertToThreadLocalAction"
+               class="edu.uiuc.threadprivaterefactoring.ui.ConvertToThreadLocalAction"
                tooltip="Hello, Eclipse world"
                menubarPath="myref/refgroup"
                toolbarPath="refgroup"
-               id="edu.uiuc.threadlocalrefactoring.actions.SampleAction">
+               id="edu.uiuc.threadprivaterefactoring.actions.SampleAction">
          </action>
       </actionSet>
    </extension>
