@@ -117,11 +117,15 @@ public class ThreadPrivateRefactoring extends Refactoring {
 
 			if (result.hasFatalError())
 				return result;
+			
 
 			for (ICompilationUnit unit : affectedCUs) {
 				ThreadPrivateVisitor visitor = new ThreadPrivateVisitor(
 						(IVariableBinding) binding);
 				ASTNode rootCU = getNodeFromCU(unit);
+				
+				ImportRewrite importRewrite = ImportRewrite.create(unit, true);
+				importRewrite.addImport("privatization.ThreadPrivate");
 
 				rootCU.accept(visitor);
 				references = visitor.getReferences();
@@ -151,7 +155,8 @@ public class ThreadPrivateRefactoring extends Refactoring {
 					}
 				}
 
-				regiterChange(unit, rewrite);
+				registerChange(unit, rewrite);
+				registerChange(unit, importRewrite);
 			}
 
 		} finally {
@@ -203,7 +208,7 @@ public class ThreadPrivateRefactoring extends Refactoring {
 
 		ClassInstanceCreation newInstance = ast.newClassInstanceCreation();
 		ParameterizedType type = ast.newParameterizedType(ast.newSimpleType(ast
-				.newSimpleName("ThreadLocal")));
+				.newSimpleName("ThreadPrivate")));
 		type.typeArguments()
 				.add(ast.newSimpleType(ast.newSimpleName(typeName)));
 
@@ -324,19 +329,40 @@ public class ThreadPrivateRefactoring extends Refactoring {
 		return null;
 	}
 
-	private void regiterChange(ICompilationUnit unit, ASTRewrite rewrite) {
-		TextChange change = changeManager.get(unit);
+	private void registerChange(ICompilationUnit unit, ASTRewrite rewrite) {
 
-		try {
-			if (change.getEdit() == null)
-				change.setEdit(rewrite.rewriteAST());
+		TextEdit textEdit = null;
+    try {
+      textEdit = rewrite.rewriteAST();
+    } catch (JavaModelException e1) {
+      e1.printStackTrace();
+    } catch (IllegalArgumentException e1) {
+      e1.printStackTrace();
+    }
+		registerTextEdit(unit, textEdit);
+	}
+
+  private void registerTextEdit(ICompilationUnit unit, TextEdit textEdit) {
+    TextChange change = changeManager.get(unit);
+    try {
+      if (change.getEdit() == null)
+				change.setEdit(textEdit);
 			else
-				change.addEdit(rewrite.rewriteAST());
-		} catch (JavaModelException e) {
-			e.printStackTrace();
+				change.addEdit(textEdit);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
+  }
+	
+	private void registerChange(ICompilationUnit unit, ImportRewrite rewrite) {
+	  TextEdit rewriteImports = null;
+	  try {
+      rewriteImports = rewrite.rewriteImports(null);
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+	  
+	  registerTextEdit(unit, rewriteImports);
 	}
 
 	private boolean isInConstructor(Name e) {
@@ -391,7 +417,7 @@ public class ThreadPrivateRefactoring extends Refactoring {
 				declarationFragment.getName()));
 		FieldDeclaration newDecl = ast.newFieldDeclaration(newFragment);
 		ParameterizedType tl = ast.newParameterizedType(ast.newSimpleType(ast
-				.newSimpleName("ThreadLocal")));
+				.newSimpleName("ThreadPrivate")));
 		List<Type> typeArgs = tl.typeArguments();
 		int oldModifiers = declaration.getModifiers();
 
@@ -430,7 +456,7 @@ public class ThreadPrivateRefactoring extends Refactoring {
 		AST ast = rewrite.getAST();
 		ClassInstanceCreation newInstance = ast.newClassInstanceCreation();
 		ParameterizedType type = ast.newParameterizedType(ast.newSimpleType(ast
-				.newSimpleName("ThreadLocal")));
+				.newSimpleName("ThreadPrivate")));
 		Type declType = ((FieldDeclaration) declarationFragment.getParent())
 				.getType();
 
@@ -477,7 +503,7 @@ public class ThreadPrivateRefactoring extends Refactoring {
 		AST ast = rewrite.getAST();
 		ClassInstanceCreation newInstance = ast.newClassInstanceCreation();
 		ParameterizedType type = ast.newParameterizedType(ast.newSimpleType(ast
-				.newSimpleName("ThreadLocal")));
+				.newSimpleName("ThreadPrivate")));
 		Type declType = ((FieldDeclaration) declarationFragment.getParent())
 				.getType();
 
