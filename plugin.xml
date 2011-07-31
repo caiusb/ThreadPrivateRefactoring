@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="ThreadLocal Action Set"
+            visible="true"
+            id="ThreadLocalRefactoring.actionSet">
+         <menu
+               label="My Refactorings"
+               id="myref">
+            <separator
+                  name="sampleGroup">
+            </separator>
+         </menu>
+         <action
+               label="Convert to ThreadLocal"
+               icon="icons/sample.gif"
+               class="edu.uiuc.threadlocalrefactoring.ui.ConvertToThreadLocalAction"
+               tooltip="Hello, Eclipse world"
+               menubarPath="myref/refgroup"
+               toolbarPath="refgroup"
+               id="edu.uiuc.threadlocalrefactoring.actions.SampleAction">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>
