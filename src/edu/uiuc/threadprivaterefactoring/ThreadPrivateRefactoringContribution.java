@@ -1,11 +1,11 @@
-package edu.uiuc.threadlocalrefactoring;
+package edu.uiuc.threadprivaterefactoring;
 
 import java.util.Map;
 
 import org.eclipse.ltk.core.refactoring.RefactoringContribution;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 
-public class ThreadLocalRefactoringContribution extends
+public class ThreadPrivateRefactoringContribution extends
 		RefactoringContribution {
 
 	@Override
@@ -13,13 +13,13 @@ public class ThreadLocalRefactoringContribution extends
 			String description, String comment, Map arguments, int flags)
 			throws IllegalArgumentException {
 	
-		return new ThreadLocalRefactoringDescriptor(project, description, comment, arguments);
+		return new ThreadPrivateRefactoringDescriptor(project, description, comment, arguments);
 	}
 	
 	@Override
 	public Map retrieveArgumentMap(RefactoringDescriptor descriptor) {
-		if (descriptor instanceof ThreadLocalRefactoringDescriptor)
-			return ((ThreadLocalRefactoringDescriptor)descriptor).getArguments();
+		if (descriptor instanceof ThreadPrivateRefactoringDescriptor)
+			return ((ThreadPrivateRefactoringDescriptor)descriptor).getArguments();
 		
 		return super.retrieveArgumentMap(descriptor);
 	}

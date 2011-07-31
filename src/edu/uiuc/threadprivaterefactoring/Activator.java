@@ -1,4 +1,4 @@
-package edu.uiuc.threadlocalrefactoring;
+package edu.uiuc.threadprivaterefactoring;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

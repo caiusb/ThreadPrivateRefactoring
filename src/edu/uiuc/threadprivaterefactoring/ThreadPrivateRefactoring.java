@@ -1,4 +1,4 @@
-package edu.uiuc.threadlocalrefactoring;
+package edu.uiuc.threadprivaterefactoring;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,15 +70,15 @@ import org.eclipse.text.edits.UndoEdit;
 import org.eclipse.ui.keys.ModifierKey;
 
 @SuppressWarnings("restriction")
-public class ThreadLocalRefactoring extends Refactoring {
+public class ThreadPrivateRefactoring extends Refactoring {
 
 	private IField field;
 	private TextChangeManager changeManager = new TextChangeManager();
 
-	public ThreadLocalRefactoring() {
+	public ThreadPrivateRefactoring() {
 	}
 
-	public ThreadLocalRefactoring(IField field) {
+	public ThreadPrivateRefactoring(IField field) {
 		this.field = field;
 	}
 
@@ -119,7 +119,7 @@ public class ThreadLocalRefactoring extends Refactoring {
 				return result;
 
 			for (ICompilationUnit unit : affectedCUs) {
-				ThreadLocalVisitor visitor = new ThreadLocalVisitor(
+				ThreadPrivateVisitor visitor = new ThreadPrivateVisitor(
 						(IVariableBinding) binding);
 				ASTNode rootCU = getNodeFromCU(unit);
 

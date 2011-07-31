@@ -1,4 +1,4 @@
-package edu.uiuc.threadlocalrefactoring;
+package edu.uiuc.threadprivaterefactoring;
 
 import java.util.Map;
 
@@ -7,13 +7,13 @@ import org.eclipse.ltk.core.refactoring.Refactoring;
 import org.eclipse.ltk.core.refactoring.RefactoringDescriptor;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
-public class ThreadLocalRefactoringDescriptor extends
+public class ThreadPrivateRefactoringDescriptor extends
 		RefactoringDescriptor {
 
 	private final static String refactoringID = "usr.caiusb.initializeattribute";
 	private Map arguments;
 
-	protected ThreadLocalRefactoringDescriptor(String project,
+	protected ThreadPrivateRefactoringDescriptor(String project,
 			String description, String comment, Map arguments) {
 		super(refactoringID, project, description, comment,
 				RefactoringDescriptor.STRUCTURAL_CHANGE
@@ -25,7 +25,7 @@ public class ThreadLocalRefactoringDescriptor extends
 	@Override
 	public Refactoring createRefactoring(RefactoringStatus status)
 			throws CoreException {
-		ThreadLocalRefactoring refactoring = new ThreadLocalRefactoring();
+		ThreadPrivateRefactoring refactoring = new ThreadPrivateRefactoring();
 		
 		return refactoring;
 	}

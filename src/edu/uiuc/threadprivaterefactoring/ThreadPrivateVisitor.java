@@ -1,4 +1,4 @@
-package edu.uiuc.threadlocalrefactoring;
+package edu.uiuc.threadprivaterefactoring;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +14,13 @@ import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
-public class ThreadLocalVisitor extends ASTVisitor {
+public class ThreadPrivateVisitor extends ASTVisitor {
 	
 	private VariableDeclarationFragment declaration;
 	private List<Expression> references = new ArrayList<Expression>();
 	private IVariableBinding fieldBinding;
 	
-	public ThreadLocalVisitor(IVariableBinding binding) {
+	public ThreadPrivateVisitor(IVariableBinding binding) {
 		fieldBinding = binding;
 	}
 	
