@@ -28,6 +28,9 @@ public class ThreadPrivateVisitor extends ASTVisitor {
 	public boolean visit(VariableDeclarationFragment node) {
 		SimpleName name = node.getName();
 		IBinding binding = name.resolveBinding();
+		if (binding == null)
+			return true;
+		
 		if (binding.isEqualTo(fieldBinding))
 			declaration = node;
 		return true;
@@ -72,6 +75,10 @@ public class ThreadPrivateVisitor extends ASTVisitor {
 		
 		SimpleName name = (SimpleName) ex;
 		IBinding binding = name.resolveBinding();
+		
+		if (binding == null)
+			return true;
+		
 		if (binding.isEqualTo(fieldBinding))
 			references.add(node);
 			
