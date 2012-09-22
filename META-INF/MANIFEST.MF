@@ -4,6 +4,10 @@ Bundle-Name: ThreadPrivateRefactoring
 Bundle-SymbolicName: ThreadPrivateRefactoring;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: edu.uiuc.threadprivaterefactoring.Activator
+Export-Package: edu,
+ edu.uiuc,
+ edu.uiuc.threadprivaterefactoring,
+ edu.uiuc.threadprivaterefactoring.ui
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ltk.core.refactoring;bundle-version="3.5.100",
@@ -12,6 +16,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources;bundle-version="3.7.100",
  org.eclipse.jdt.ui;bundle-version="3.7.0",
  org.eclipse.text;bundle-version="3.5.100"
-Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.uiuc.threadprivaterefactoring
+Bundle-ActivationPolicy: lazy
