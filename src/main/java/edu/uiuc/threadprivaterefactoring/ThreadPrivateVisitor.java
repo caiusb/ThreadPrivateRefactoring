@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.AnonymousClassDeclaration;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.IBinding;
@@ -62,8 +63,15 @@ public class ThreadPrivateVisitor extends ASTVisitor {
 			return true;
 		
 		if (binding.isEqualTo(fieldBinding))
-			references.add(node);
+			if (!declaration.equals(node))
+				references.add(node);
 		
+		return true;
+	}
+	
+	@Override
+	public boolean visit(AnonymousClassDeclaration node) {
+		System.out.println("Found anonymous class declaration: " + node);
 		return true;
 	}
 	
