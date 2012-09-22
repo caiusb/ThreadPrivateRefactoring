@@ -3,11 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ThreadPrivateRefactoring
 Bundle-SymbolicName: ThreadPrivateRefactoring;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: edu.uiuc.threadprivaterefactoring.Activator
+Bundle-Activator: edu.uiuc.tpr.Activator
 Export-Package: edu,
  edu.uiuc,
- edu.uiuc.threadprivaterefactoring,
- edu.uiuc.threadprivaterefactoring.ui
+ edu.uiuc.tpr,
+ edu.uiuc.tpr.ui
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ltk.core.refactoring;bundle-version="3.5.100",

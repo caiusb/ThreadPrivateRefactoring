@@ -1,4 +1,4 @@
-package edu.uiuc.threadprivaterefactoring.ui;
+package edu.uiuc.tpr.ui;
 
 import org.eclipse.ltk.core.refactoring.Refactoring;
 import org.eclipse.ltk.ui.refactoring.RefactoringWizard;

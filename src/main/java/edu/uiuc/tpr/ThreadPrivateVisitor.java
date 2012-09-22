@@ -1,4 +1,4 @@
-package edu.uiuc.threadprivaterefactoring;
+package edu.uiuc.tpr;
 
 import java.util.ArrayList;
 import java.util.List;

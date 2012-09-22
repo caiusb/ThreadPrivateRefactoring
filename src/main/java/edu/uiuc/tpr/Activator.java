@@ -1,4 +1,4 @@
-package edu.uiuc.threadprivaterefactoring;
+package edu.uiuc.tpr;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

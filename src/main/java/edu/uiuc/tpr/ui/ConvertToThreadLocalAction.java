@@ -1,4 +1,4 @@
-package edu.uiuc.threadprivaterefactoring.ui;
+package edu.uiuc.tpr.ui;
 
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jface.action.IAction;
@@ -10,7 +10,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
-import edu.uiuc.threadprivaterefactoring.ThreadPrivateRefactoring;
+import edu.uiuc.tpr.ThreadPrivateRefactoring;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will

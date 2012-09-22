@@ -18,7 +18,7 @@
          <action
                label="Convert to ThreadPrivate"
                icon="icons/sample.gif"
-               class="edu.uiuc.threadprivaterefactoring.ui.ConvertToThreadLocalAction"
+               class="edu.uiuc.tpr.ui.ConvertToThreadLocalAction"
                tooltip="Hello, Eclipse world"
                menubarPath="myref/refgroup"
                toolbarPath="refgroup"
